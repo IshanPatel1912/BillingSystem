@@ -1,0 +1,18 @@
+Date: 3/1/2026
+Time: 14:57
+Phone Number: +919662131322
+Image: C:\Users\patel\AppData\Local\Temp\Bill_INV-20260103-0001.png
+Caption: Invoice: INV-20260103-0001Customer Name: DaxCar: Swift (32000 KM)Car Number: GJ09AG7129Total: ₹10000.00Thank you for your business!
+--------------------
+Date: 3/1/2026
+Time: 15:52
+Phone Number: +916351803513
+Image: C:\Users\patel\AppData\Local\Temp\Bill_INV-20260103-0001.png
+Caption: Invoice: INV-20260103-0001Customer Name: IshanCar: Venue (32000 KM)Car Number: GJ18BL4507Total: ₹2000.00Thank you for your business!
+--------------------
+Date: 3/1/2026
+Time: 15:53
+Phone Number: +916351803513
+Image: C:\Users\patel\AppData\Local\Temp\Bill_INV-20260103-0002.png
+Caption: Invoice: INV-20260103-0002Customer Name: IshanCar: Venue (60000 KM)Car Number: GJ18BL4507Total: ₹4700.00Thank you for your business!
+--------------------
