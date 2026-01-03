@@ -1,4 +1,5 @@
 import sys
+import os
 import logging
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, QTabWidget, QLabel, QDialog, 
                              QLineEdit, QPushButton, QMessageBox, QFormLayout, QHBoxLayout, QTableWidget, 
@@ -25,6 +26,12 @@ from tabs.portfolio_tab import PortfolioTab
 from tabs.dashboard_tab import DashboardTab
 from tabs.business_detail_tab import BusinessDetailTab
 from tabs.tracked_items_tab import TrackedItemsTab
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
 
 class LoginDialog(QDialog):
     def __init__(self):
