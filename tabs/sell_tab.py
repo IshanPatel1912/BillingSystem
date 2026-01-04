@@ -13,6 +13,12 @@ from PyQt6.QtGui import QRegularExpressionValidator, QShortcut, QKeySequence
 from database import Session, Sale, SaleItem, Inventory, ServiceReminder, get_current_business_details
 from modules.pdf_generator import generate_bill_pdf
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
+
 # --- FIX: SAVE LOG FILE TO APPDATA FOLDER (Not Program Files) ---
 APP_NAME = "BillingSystem"
 if sys.platform == 'win32':
@@ -299,15 +305,24 @@ class SellTab(QWidget):
         def run():
             try:
                 import pywhatkit as kit
+                import webbrowser
                 from pdf2image import convert_from_path
                 
-                poppler_path = os.path.abspath(RAW_POPPLER_PATH)
+                # Try to register Chrome browser
+                chrome_path = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+                if os.path.exists(chrome_path):
+                    webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(chrome_path))
+                    kit.core.core.browser = 'chrome'
+                
+                biz = get_current_business_details()
+                country_code = biz.country_code if biz and biz.country_code else "+91"
+                
+                poppler_path = resource_path(os.path.join('poppler', 'Library', 'bin'))
                 if not os.path.exists(poppler_path):
-                    local_poppler = os.path.join(os.getcwd(), 'poppler', 'Library', 'bin')
-                    if os.path.exists(local_poppler):
-                        poppler_path = local_poppler
-                    else:
-                        logging.error(f"POPPLER MISSING. Config: {poppler_path}, Local: {local_poppler}")
+                    # Fallback to config or other
+                    poppler_path = os.path.abspath(RAW_POPPLER_PATH)
+                    if not os.path.exists(poppler_path):
+                        logging.error(f"POPPLER MISSING. Bundled: {resource_path('poppler/Library/bin')}, Config: {poppler_path}")
                         return
 
                 images = convert_from_path(pdf_path, poppler_path=poppler_path)
@@ -323,7 +338,7 @@ class SellTab(QWidget):
                                f"Total: ₹{amount:.2f}\n"
                                f"Thank you for your business!")
                     
-                    kit.sendwhats_image(f"+91{number}", abs_img_path, caption, 20, True, 5)
+                    kit.sendwhats_image(f"{country_code}{number}", abs_img_path, caption, 20, True, 5)
                     
                     # Clean up temp files
                     try:

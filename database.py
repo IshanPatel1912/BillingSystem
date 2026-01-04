@@ -116,6 +116,7 @@ class BusinessDetail(Base):
     phone = Column(String, default="+1234567890")
     owner_name = Column(String, default="Owner Name")
     logo_path = Column(String, nullable=True)
+    country_code = Column(String, default="+91")
 
 class User(Base):
     __tablename__ = 'users'

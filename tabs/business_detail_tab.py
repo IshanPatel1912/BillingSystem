@@ -24,6 +24,7 @@ class BusinessDetailTab(QWidget):
         self.biz_address = QLineEdit()
         self.biz_phone = QLineEdit()
         self.biz_owner = QLineEdit()
+        self.biz_country_code = QLineEdit()
         
         # Logo Selection UI
         logo_layout = QHBoxLayout()
@@ -41,6 +42,7 @@ class BusinessDetailTab(QWidget):
         biz_layout.addRow("Address:", self.biz_address)
         biz_layout.addRow("Phone:", self.biz_phone)
         biz_layout.addRow("Owner Name:", self.biz_owner)
+        biz_layout.addRow("Country Code (e.g., +91):", self.biz_country_code)
         biz_layout.addRow("Logo:", logo_layout) 
         
         save_biz_btn = QPushButton("Save Business Details")
@@ -101,6 +103,7 @@ class BusinessDetailTab(QWidget):
             self.biz_address.setText(biz.address)
             self.biz_phone.setText(biz.phone)
             self.biz_owner.setText(biz.owner_name if biz.owner_name else "")
+            self.biz_country_code.setText(biz.country_code if biz.country_code else "+91")
             self.logo_path_field.setText(biz.logo_path if biz.logo_path else "")
             
         # Load Users
@@ -132,6 +135,7 @@ class BusinessDetailTab(QWidget):
             biz.address = self.biz_address.text()
             biz.phone = self.biz_phone.text()
             biz.owner_name = self.biz_owner.text()
+            biz.country_code = self.biz_country_code.text()
             biz.logo_path = self.logo_path_field.text()
             
             session.commit()

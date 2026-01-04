@@ -17,10 +17,10 @@ Installation Steps:
 5. Complete the installation.
 
 Post-Installation Setup:
-1. Ensure Poppler is installed:
-   - Download poppler from: https://blog.alivate.com.au/poppler-windows/
-   - Extract to C:\poppler (or any location)
-   - Update config.ini in the installation folder with the correct poppler_path
+1. Ensure Google Chrome is installed:
+   - Download and install Chrome from: https://www.google.com/chrome/
+   - Open Chrome and log into WhatsApp Web at: https://web.whatsapp.com/
+   - Keep the browser window open or ensure it's the default browser.
 
 2. Antivirus Configuration:
    - The application may trigger antivirus warnings due to packaging.
@@ -28,6 +28,11 @@ Post-Installation Setup:
    - If issues persist, temporarily disable real-time protection during first run.
 
 3. First Run:
+   - The application may trigger antivirus warnings due to packaging.
+   - Add the BillingSystem folder to your antivirus exclusions.
+   - If issues persist, temporarily disable real-time protection during first run.
+
+4. First Run:
    - Launch BillingSystem from the desktop shortcut or Start menu.
    - Configure business details in the settings.
    - The database will be created automatically in AppData.
@@ -41,7 +46,8 @@ Features:
 
 Troubleshooting:
 - If the app doesn't start, check that all dependencies are installed.
-- For WhatsApp sending, ensure WhatsApp Web is logged in.
+- For WhatsApp sending: Ensure Google Chrome is installed, WhatsApp Web is logged in, and the device has a GUI (not headless server).
+- If WhatsApp sending fails, check the country code in business details matches the customer's phone number.
 - Database issues: Check logs in %APPDATA%\BillingSystem\
 
 Support:

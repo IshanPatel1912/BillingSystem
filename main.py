@@ -134,6 +134,7 @@ class ReminderDialog(QDialog):
         
         biz = get_current_business_details()
         biz_name = biz.name if biz else "Service Center"
+        country_code = biz.country_code if biz and biz.country_code else "+91"
 
         message = (f"🔔 Vehicle Service Reminder\n"
                    f"Hello {customer_name},\n"
@@ -147,7 +148,7 @@ class ReminderDialog(QDialog):
         def run():
             try:
                 import pywhatkit as kit
-                kit.sendwhatmsg_instantly(f"+91{mobile}", message, 15, True, 4)
+                kit.sendwhatmsg_instantly(f"{country_code}{mobile}", message, 15, True, 4)
             except Exception:
                 logger.exception("WhatsApp Error while sending reminder to %s", mobile)
         

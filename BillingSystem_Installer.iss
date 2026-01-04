@@ -9,8 +9,7 @@ Compression=lzma
 SolidCompression=yes
 
 [Files]
-Source: "dist\BillingSystem\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
-Source: "path\to\chromedriver.exe"; DestDir: "{app}\driver"; Flags: ignoreversion
+Source: "dist\BillingSystem.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\BillingSystem"; Filename: "{app}\BillingSystem.exe"
